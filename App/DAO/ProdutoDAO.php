@@ -26,4 +26,28 @@ class ProdutoDAO extends Conexao
             echo "<div class='alert alert-danger'>{$e->getMessage()}</div>";
         }
     }
+
+    public function pesquisar($produto = null)
+    {
+        $sql = "select * from produtos where descricao like :descricao";
+        try{
+            $p = $this->conexao->prepare($sql);
+            $p->bindValue(":descricao", "%".$produto->getDescricao()."%");
+            $p->execute();
+            return $p->fetchAll(\PDO::FETCH_CLASS, "\App\Model\Produto");
+        } catch (\PDOException $e){
+            echo "<div class='alert alert-danger'>{$e->getMessage()}</div>";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
