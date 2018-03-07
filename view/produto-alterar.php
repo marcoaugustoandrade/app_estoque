@@ -4,8 +4,12 @@ include 'cabecalho.php';?>
 <h1>Alterar produto</h1>
 <?php
     include '../vendor/autoload.php';
+    //Verificar se o usuário está logado
+    $uDAO = new \App\DAO\UsuarioDAO();
+    $uDAO->verificar();
 
-    if($_POST){
+
+if($_POST){
         $p2 = new \App\Model\Produto();
         $p2->setId($_POST['id']);
         $p2->setDescricao($_POST['descricao']);

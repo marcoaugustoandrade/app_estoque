@@ -4,7 +4,11 @@ include 'cabecalho.php';?>
 <h1>Cadastrar novo produto</h1>
 <?php
     include '../vendor/autoload.php';
-    if ($_POST){
+    //Verificar se o usuário está logado
+    $uDAO = new \App\DAO\UsuarioDAO();
+    $uDAO->verificar();
+
+if ($_POST){
         $p = new \App\Model\Produto();
         $p->setDescricao($_POST['descricao']);
         $p->setQuantidade(\App\Helper\Moeda::set($_POST['quantidade']));
