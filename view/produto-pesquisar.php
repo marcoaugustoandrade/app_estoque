@@ -20,6 +20,8 @@ include 'cabecalho.php';?>
 
     if (isset($_GET['msg']) && $_GET['msg'] == 1)
         echo "<div class='alert alert-success'>Produto excluído com sucesso!</div>";
+    if (isset($_GET['msg']) && $_GET['msg'] == 2)
+        echo "<div class='alert alert-success'>Produto alterado com sucesso!</div>";
 
     $p = new \App\Model\Produto();
     isset($_GET['descricao']) ? $p->setDescricao($_GET['descricao']) : $p->setDescricao("");
